@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+ 数据库的字表必须和实体类的属性一样!!!!!  sql片段可用
+
+-->
+
+<mapper namespace="com.example.finall.dao.CustomerMapper">
+    <update id="UpdateCustomer">
+        update customer
+        set user_name = #{user_name},
+            password = #{password}
+        where phone = #{phone};
+    </update>
+
+    <update id="UpdatePassword">
+        update customer
+        <set>
+        password = #{password}
+        </set>
+        where phone = #{phone};
+
+
+    </update>
+    <update id="UpdateCustomerInfo">
+        update customer
+        <set>
+            user_name = #{newUsername}
+        </set>
+        where  phone = #{phone};
+    </update>
+    <delete id="deleteByPhone">
+        delete from  customer where phone = #{phone} ;
+    </delete>
+
+    <select id="getAllCustomers" resultType="com.example.finall.pojo.Customer">
+     select *
+     from customer;
+    </select>
+    <select id="queryCustomerByPhone" resultType="com.example.finall.pojo.Customer">
+        select * from customer
+        where phone = #{phone};
+    </select>
+
+
+    <insert id="addCustomer">
+        insert into customer (user_name,password,phone)
+        values (#{user_name},#{password},#{phone});
+    </insert>
+
+
+    <select id="ViewInformation" resultType="com.example.finall.pojo.Customer">
+        select * from customer
+        where phone = #{phone};
+    </select>
+
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.finall.dao.PetMapper">
+
+    <insert id="addPet">
+        insert into pet (type,pet_name,owner_phone,pet_id,size)
+        values (#{type},#{pet_name},#{owner_phone},#{pet_id},#{size});
+    </insert>
+    <update id="updatePet">
+        update pet
+        set type = #{type},
+            pet_name = #{pet_name},
+            owner_phone = #{owner_phone},
+            size = #{size}
+        where pet_id = #{pet_id};
+    </update>
+    <delete id="deleteByPetId">
+        delete from pet where pet_id = #{pet_id};
+    </delete>
+    <select id="queryPetById" resultType="com.example.finall.pojo.Pet">
+        select * from pet
+        where pet_id = #{petId};
+    </select>
+    <select id="QueryPetByOwner" resultType="com.example.finall.pojo.Pet">
+        select * from pet
+        where owner_phone = #{owner_phone};
+    </select>
+    <select id="viewPets" resultType="com.example.finall.pojo.Pet">
+        select * from pet;
+    </select>
+</mapper>

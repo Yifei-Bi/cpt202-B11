@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>VIP</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/style2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link rel="shortcut icon" href="-.ico" type="image/x-icon">
+    <style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #4d4c4c;
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover {
+			background-color: #111;
+		}
+
+        body {
+			background-color: rgb(186, 234, 253); 
+			
+		}
+
+        h1 {
+              text-align: center;
+              font-family:'Times New Roman', Times, serif;
+        }
+        p {
+              text-align: center;
+			  font-size: 20px;
+              font-family:'Times New Roman', Times, serif;
+        }
+
+        .bordered {
+                  padding: 10px;
+                 border: 1px solid #aaaaaa;
+                 width: 100%;
+                 text-align: center;
+    
+                 border-radius: 5px;
+                box-shadow: 2px 2px 4px #5e5b5b;
+       }
+
+       input[type="text"] {
+              width: 250px;
+              height: 30px;
+        }
+
+        #ad-description {
+          width: 600px;
+          height: 300px;
+        }
+
+		form{
+			color: #7a7878;
+			font-size: 25px;
+			line-height: 1.5;
+		}
+
+    .container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #7a7878;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.3);
+		}
+
+    .card {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 20px;
+			background-color: #f2f2f2;
+			border-radius: 5px;
+			padding: 20px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.2);
+		}
+		.card img {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			object-fit: cover;
+			margin-bottom: 10px;
+		}
+		.card h2 {
+			color: #5fa3f1;
+			margin: 0;
+		}
+		.card p {
+			margin: 0;
+		}
+		.card .vip {
+			font-size: 1.2em;
+			color: #91bdf7;
+			margin-top: 10px;
+		}
+    p{
+      margin: 10px;
+    }
+
+    button{
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 15px;
+      color: #7a7878;
+    }
+
+	
+	form{
+			color: #7a7878;
+      font-family: 'Times New Roman', Times, serif;
+			font-size: 25px;
+			line-height: 1.5;
+		}
+	
+	h2{
+		font-family: 'Times New Roman', Times, serif;
+
+		}
+
+
+	
+	</style>
+</head>
+<body>
+	<div>
+		<div>
+        
+			<h1 class="bordered"><i class="fas fa-paw"></i>      Welcome to our Pet Store!      <i class="fas fa-paw"></i></h1>
+
+			<center>
+				<div class="image-row">
+					<img src="../static/f.jpg" alt="Image 1" width="363">
+					<img src="../static/g.jpg" alt="Image 2" width="363">
+					<img src="../static/OIP.jpg" alt="Image 3" width="363">
+					<img src="../static/R.jpg" alt="Image 4" width="363">
+				</div>
+			</center>
+
+
+
+
+
+
+			<p>Our store is committed to providing services 
+				for pet dogs, including bathing, beauty, tooth cleaning, and foster care services.</p>
+			<p> Groomers in this store have their own areas of expertise.</p>
+			<p>At the same time, our store also sells various pet peripheral goods.</p>
+			<p>Welcome to the official website to check your options.</p>
+		</div>
+        
+       
+	</div>
+
+  
+	<div class="menu-container">
+		<ul class="menu">
+			<li style="text-align: center;"><a th:href="@{/ho}">HOME</a></li>
+		</ul>
+	</div>
+
+   
+    <br></br>
+    <br></br>
+    <div class="container" style="line-height: 2;">
+      <h1 >VIP Information</h1>
+      <div class="card">
+        <img src="../static/6.jpg" alt="VIP头像">
+        <h2 th:if="${not isVip}">Welcome to be a VIP</h2>
+		<h2 th:if="${isVip}">Card Number: </h2><h2 th:text="${card_id}"></h2>
+		<h2 th:if="${isVip}">Balance: </h2><h2 th:text="${balance}"></h2>
+        <p></p>
+        <p class="vip">VIP Discount: 70%</p>
+      </div>
+    </div>
+<br><br>
+	<center>
+		<form action = "recharge" method="post">
+		  <label for="phoneNumber">Phone Number</label>
+		  <input type="text" id="phoneNumber" name="phoneNumber"><br><br>
+			<p th:if="${isVip}">
+			  <label  for="rechargeAmount">Recharge Amount</label>
+			  <input  type="number" id="rechargeAmount" name="rechargeAmount"><br><br>
+			</p>
+			<p th:if="${not isVip}">
+			<label  for="rechargeAmounts">Recharge Amount</label>
+			<input  type="number" id="rechargeAmounts" name="rechargeAmount" min="1000"><br><br>
+		</p>
+		  <input type="submit" value="Confirm" style="font-family: 'Times New Roman', Times, serif;">
+		</form>
+	  </center>
+  
+    <br></br>
+  <br></br>
+  <br></br>
+  <br></br>
+
+
+	
+	
+
+
+<style>
+    .MyButton {
+      background-color: #84cee6;
+      border: white;
+      color: white;
+      padding: 30px 100px;
+      width: 500px;
+      height: 70px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+
+<br></br>
+<br></br>
+<br></br>
+
+
+
+<style>
+    .MyButton1 {
+      background-color: #f6f5f3;
+      border: white;
+      color: rgb(87, 87, 87);
+      padding: 20px 50px;
+      width: 200px;
+      height: 60px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+  
+
+<br></br>
+<br></br>
+
+</body>
+</html>

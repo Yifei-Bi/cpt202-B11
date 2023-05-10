@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.finall.dao.ManagerMapper">
+
+    <insert id="addManager">
+      insert into  manager(manager_name,phone,password)
+          values (#{manager_name},#{phone},#{password});
+    </insert>
+    <update id="updateManager">
+        update manager
+        set
+            phone = #{phone},
+            password =#{password}
+        where phone = #{phone};
+    </update>
+    <delete id="deleteManagerByName">
+        delete from manager where manager_name = #{manager_name};
+    </delete>
+    <delete id="deleteManager">
+        delete from manager where phone = #{phone};
+    </delete>
+    <select id="getAllManager" resultType="com.example.finall.pojo.Manager">
+           select * from manager;
+    </select>
+        <select id="queryManagerByPhone" resultType="com.example.finall.pojo.Manager">
+            select * from manager where phone = #{phone};
+        </select>
+
+
+</mapper>
+

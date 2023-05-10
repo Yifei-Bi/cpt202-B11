@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.finall.dao.CardMapper">
+
+
+    <insert id="addCard">
+        insert into card(card_id,balance)
+        values (#{card_id},#{balance});
+    </insert>
+    <update id="updateCard">
+        update card
+        set
+            balance = #{balance}
+        where card_id = #{card_id};
+
+
+    </update>
+    <delete id="deleteCardById">
+        delete from card where card_id = #{card_id};
+
+    </delete>
+    <select id="QueryCardById" resultType="com.example.finall.pojo.Card">
+        select * from card where card_id = #{phone};
+    </select>
+
+    <select id="IsVip" resultType="com.example.finall.pojo.Card">
+        select * from card where card_id = #{phone}
+    </select>
+
+</mapper>

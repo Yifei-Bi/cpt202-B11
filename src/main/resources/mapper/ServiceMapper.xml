@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.finall.dao.ServiceMapper">
+
+
+    <insert id="addService">
+        insert into service (type,description,price)
+        values (#{type},#{description},#{price});
+    </insert>
+    <update id="updateService">
+        update service
+        set description = #{description},
+            price = #{price}
+        where type = #{type};
+
+    </update>
+    <delete id="deleteServiceByName">
+        delete from service where type = #{type};
+    </delete>
+    <select id="QueryServiceByName" resultType="com.example.finall.pojo.Service">
+        select type,description,price from service
+        where  type = #{type};
+    </select>
+    <select id="QueryService" resultType="com.example.finall.pojo.Service">
+        select type,description,price from service;
+    </select>
+</mapper>

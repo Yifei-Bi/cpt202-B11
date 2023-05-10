@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Forum</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/style2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link rel="shortcut icon" href="-.ico" type="image/x-icon">
+    <style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #4d4c4c;
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover {
+			background-color: #111;
+		}
+
+        body {
+			background-color: rgb(186, 234, 253); 
+			
+		}
+
+        h1 {
+              text-align: center;
+              font-family:'Times New Roman', Times, serif;
+        }
+        p {
+              text-align: center;
+			  font-size: 20px;
+              font-family:'Times New Roman', Times, serif;
+        }
+
+        .bordered {
+                  padding: 10px;
+                 border: 1px solid #aaaaaa;
+                 width: 100%;
+                 text-align: center;
+    
+                 border-radius: 5px;
+                box-shadow: 2px 2px 4px #5e5b5b;
+       }
+
+       input[type="text"] {
+              width: 250px;
+              height: 30px;
+        }
+
+   
+		form{
+			color: #7a7878;
+			font-size: 25px;
+			line-height: 1.5;
+		}
+
+    .div-class {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #7a7878;
+  padding-left: 20px; /* 左侧内部距离为20像素 */
+  padding-right: 20px; /* 右侧内部距离为10像素 */
+  width: 88%;
+}
+
+table{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #7a7878;
+  margin-left: 50px; /* 左侧留出50px的空白 */
+  margin-right: 50px; /* 右侧留出50px的空白 */
+  padding: 0 50px;
+  width: 100%;
+  line-height: 1.5;
+}
+
+th{
+  font-size: 25px;
+}
+
+h2{
+  text-align: left;
+  color: #5e5b5b;
+}
+
+input[type="text"] {
+              width: 250px;
+              height: 30px;
+        }
+
+        #ad-description {
+          width: 400px;
+          height: 200px;
+        }
+
+
+        form{
+            color: #7a7878;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 25px;
+            line-height: 1.5;
+        }
+
+        .forum-post {
+            border: 1px solid #9a9a9a;
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        h2{
+            text-align:center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+  
+
+	
+	</style>
+</head>
+<body>
+	<div>
+		<div>
+        
+			<h1 class="bordered"><i class="fas fa-paw"></i>      Welcome to our Pet Store!      <i class="fas fa-paw"></i></h1>
+			 
+		<div class="image-row">
+            <img src="../static/1.jpg" alt="Image 1" width="363">
+            <img src="../static/3.jfif" alt="Image 2" width="363">
+            <img src="../static/2.jpg" alt="Image 3" width="363">
+            <img src="../static/4.jfif" alt="Image 4" width="363">
+		  </div>
+
+		
+		
+
+			<p>Our store is committed to providing services 
+				for pet dogs, including bathing, beauty, tooth cleaning, and foster care services.</p>
+			<p> Groomers in this store have their own areas of expertise.</p>
+			<p>At the same time, our store also sells various pet peripheral goods.</p>
+			<p>Welcome to the official website to check your options.</p>
+		</div>
+        
+    
+	</div>
+  <div class="menu-container">
+		<ul class="menu">
+            <li style="text-align: center;"><a th:href="@{/ho}">HOME</a></li>
+		</ul>
+		</div>
+
+
+<center>     
+    <div id="main-container">
+      <div id="header">
+        <h1>Forum</h1>
+      </div>
+      <br>
+      <br>
+        <center>
+        <h2 style="text-align: left;">Latest Posts</h2>
+        </center>
+        <div class="forum-post" style="border: 4px double #ccc; padding: 10px;">
+        <table>
+          <tr>
+            <th style="text-align: left;">Order id</th>
+            <th style="text-align: left;">Groomer ranking</th>
+            <th style="text-align: left;">Service ranking</th>
+              <th style="text-align: left;">shop ranking</th>
+              <th style="text-align: left;">Content</th>
+          </tr>
+            <tr th:each="user: ${commentsList}">
+                <td th:text="${user.order_id}"></td>
+                <td th:text="${user.groomer_ranking}"></td>
+                <td th:text="${user.service_rating}"></td>
+                <td th:text="${user.shop_rating}"></td>
+                <td th:text="${user.text}"></td>
+            </tr>
+        </table>
+        <br>
+        </div>
+
+  <center>
+  </center>
+            <br></br>
+            <br></br>
+            <br></br>
+        <img src="../static/p.jpg" alt="Image 1" width="363">
+
+<style>
+    .MyButton {
+      background-color: #84cee6;
+      border: white;
+      color: white;
+      padding: 30px 100px;
+      width: 500px;
+      height: 70px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+
+
+
+
+<style>
+    .MyButton1 {
+      background-color: #f6f5f3;
+      border: white;
+      color: rgb(87, 87, 87);
+      padding: 20px 50px;
+      width: 300px;
+      height: 60px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+  
+
+<br></br>
+<br></br>
+
+
+	
+
+
+</body>
+</html>

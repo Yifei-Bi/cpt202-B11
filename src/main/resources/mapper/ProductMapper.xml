@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.finall.dao.ProductMapper">
+
+
+    <insert id="addProduct">
+        insert into product (product_name, product_picture, price, description)
+        values (#{productName},#{productPicture},#{price},#{description});
+    </insert>
+    <update id="updateProduct">
+        update product
+        set product_picture = #{filename},
+            price = #{price},
+            description = #{description}
+        where product_name = #{productName};
+    </update>
+    <delete id="deleteProductByname">
+        delete from product
+        where product_name = #{productName};
+    </delete>
+    <select id="QueryProductByName" resultType="com.example.finall.pojo.Product">
+        select price,description,product_picture as productPicture,product_name as productName from product
+        where product_name = #{name};
+    </select>
+    <select id="queryProduct" resultType="com.example.finall.pojo.Product">
+        select price,description,product_picture as productPicture,product_name as productName from product;
+    </select>
+</mapper>

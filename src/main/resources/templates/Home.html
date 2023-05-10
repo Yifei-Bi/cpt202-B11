@@ -1,0 +1,509 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
+<style type="text/css">
+   .imglist li{float:left;
+               margin:5px;
+               display:inline;}
+</style>
+<head>
+    
+    <meta name="viewport" content="width=100%; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;" />
+    <link rel="icon" href="../static/images/favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="../static/images/favicon.png" type="image/png" />
+    <title>Home Page</title>
+    <link href="../static/css/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="../static/css/prettyPhoto.css" type="text/css" rel="stylesheet" />
+	<!--[if lt IE 9]>
+    <script type="text/javascript" src="http//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <link href="../static/css/ie.css" type="text/css" rel="stylesheet"/>
+    <![endif]-->
+    <script type="text/javascript" th:src="@{../static/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{../static/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{../static/js/jquery.easing.1.3.js}"></script>
+    <script type="text/javascript" th:src="@{../static/js/jquery.quicksand.js}"></script>
+    <script type="text/javascript" th:src="@{../static/js/superfish.js}"></script>
+
+
+<!--    <script type="text/javascript" src="../static/js/jquery.min.js"></script>-->
+<!--    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>-->
+<!--    <script type="text/javascript" src="../static/js/jquery.easing.1.3.js"></script>-->
+<!--    <script type="text/javascript" src="../static/js/jquery.quicksand.js"></script>-->
+<!--    <script type="text/javascript" src="../static/js/superfish.js"></script>-->
+    <script type="text/javascript" src="../static/js/hoverIntent.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.hoverdir.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="../static/js/jflickrfeed.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.elastislide.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.tweet.js"></script>
+    <script type="text/javascript" src="../static/js/smoothscroll.js"></script>
+    <script type="text/javascript" src="../static/js/jquery.ui.totop.js"></script>
+    <script type="text/javascript" src="../static/js/main.js"></script>
+    <script type="text/javascript" src="../static/js/ajax-mail.js"></script>
+    <script type="text/javascript" src="../static/js/accordion.settings.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="../static/css/style2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="shortcut icon" href="-.ico" type="image/x-icon">
+    <style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #4d4c4c;
+		}
+
+		li {
+			float: left;
+            font-size: 16px;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover {
+			background-color: #111;
+		}
+
+        body {
+			background-color: rgb(186, 234, 253); 
+			
+		}
+
+        h1 {
+              text-align: center;
+              font-family:'Times New Roman', Times, serif;
+        }
+        p {
+              text-align: center;
+			  font-size: 20px;
+              font-family:'Times New Roman', Times, serif;
+        }
+
+        .bordered {
+                  padding: 10px;
+                 border: 1px solid #aaaaaa;
+                 width: 100%;
+                 text-align: center;
+    
+                 border-radius: 5px;
+                box-shadow: 2px 2px 4px #5e5b5b;
+       }
+
+	
+	</style>
+    <script language="javascript">
+        function init()
+        {//先隐藏二级菜单
+            document.getElementById("sub_menu_1").hidden=true;
+            document.getElementById("sub_menu_2").hidden=true;
+            document.getElementById("sub_menu_3").hidden=true;
+            document.getElementById("sub_menu_4").hidden=true;
+            document.getElementById("sub_menu_5").hidden=true;
+        }
+        function f(str)
+        {//点击展开折叠效果
+            var sub_menu = document.getElementById(str);
+            var dis_v = sub_menu.style.display;
+            
+            if(dis_v == "block")
+                sub_menu.style.display = "none";
+            else
+                sub_menu.style.display = "block";
+        }
+    </script>
+
+    <!-- CSS -->
+    <style type="text/css">
+        body{
+            background-color: #f2f2f3;
+            text-align: center;
+        }
+        tr{
+            text-align: center;
+        }
+        table{
+            border-top:1px solid;
+            border-bottom:1px solid;
+            border-bottom-color: #c3daee;
+            border-top-color: #c3daee;
+            background-color: rgb(186, 234, 253); 
+            
+        }
+        .table{
+            margin-left:40px;
+            border-left:1px solid;
+            border-right:1px solid;
+            border-left-color: #c3daee;
+            border-right-color: #c3daee;
+        }
+
+        /*一级标题*/
+        .one{
+            height: 30px;
+            width: 135px;
+            background-color: #e4e6e7;
+            color: #ff8b1a;
+            cursor: pointer;/*小手*/
+        }
+
+        /*二级标题*/
+        .two tr{
+            background-color: #f2f2f3;
+            color: #000;
+        }
+        .two a{
+            /*margin-left: 50px;*/
+            /*float: right;*/
+            text-decoration: none;
+            color: #000;
+        }
+        .two td{
+            height: 25px;
+            width: 135px;
+        }
+    </style>
+
+</head>
+
+<body onload = "init()">
+    <div>
+		<div>
+        
+			<h1 class="bordered"><i class="fas fa-paw"></i>      Welcome to our Pet Store!      <i class="fas fa-paw"></i></h1>
+
+            <center>
+                <div class="image-row">
+                    <img src="../static/1.jpg" alt="Image 1" width="363">
+                    <img src="../static/3.jfif" alt="Image 2" width="363">
+                    <img src="../static/2.jpg" alt="Image 3" width="363">
+                    <img src="../static/4.jfif" alt="Image 4" width="363"			>
+                </div>
+            </center>
+
+			<p>Our store is committed to providing services 
+				for pet dogs, including bathing, beauty, tooth cleaning, and foster care services.</p>
+			<p> Groomers in this store have their own areas of expertise.</p>
+			<p>At the same time, our store also sells various pet peripheral goods.</p>
+			<p>Welcome to the official website to check your options.</p>
+		</div>
+        
+
+        <br>
+        <center>
+        <button style="font-family: 'Times New Roman', Times, serif ;" th:if="${session.userId == '0'}"><a th:href="@{Pages}" th:if="${session.userId == '0'}">login</a></button>
+    </center>
+
+    <br>
+       
+	</div>
+    <div class="menu-container">
+		<ul class="menu">
+			<li style="text-align: center;"><a th:href="@{/ho}">HOME</a></li>
+			<li style="text-align: center;"><a th:href="@{/cus}">CUSTOMER</a></li>
+			<li style="text-align: center;"><a th:href="@{/ser}">SERVICE</a></li>
+			<li style="text-align: center;"><a th:href="@{/viewEvaluation}">FORUM</a></li>
+			<li style="text-align: center;"><a th:href="@{/man}">MANAGER</a></li>
+		</ul>
+		</div>
+    <table cellspacing="0" cellpadding="0" class="table">
+        <tbody>
+            <tr onclick = "f('sub_menu_1')">
+                <td class="one">Free time</td>
+            </tr>
+            <tr>
+                <td class="two">
+                    <table id="sub_menu_1">
+                        <tbody>
+                            <tr><td>today 12：00-13：00</td>
+                            <td>today 14：00-15：00</td>
+                            <td>today 15：00-16：00</td>
+                            <td>today 16：00-17：00</td></tr>
+                            <tr onclick = "f('sub_menu_2')"><td class="one">more time(2 days)</td></tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="two">
+                    <table id="sub_menu_2">
+                        <tbody>
+                        <tr><td>tomorrow 10：00-11：00</td>
+                        <td>tomorrow 12：00-13：00</td>
+                        <td>tomorrow 14：00-15：00</td>
+                        <td>tomorrow 17：00-18：00</td></tr>
+                        
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            
+
+        </tbody>
+    </table>
+
+
+	
+	<br></br>
+    <section>
+        <div id="mainslider" class="flexslider">
+            <ul class="slides">
+                
+                <li>
+                    <img src="../static/example/slider1.jpg" alt="photo" />
+                    <h3><span>neque a mauris</span><a href="#">Great design and the best ideas. Dolor sit amet, consectetur adipiscing elit.Aliquam varius sapien porttitor</a></h3>
+                </li>
+                <li>
+                    <img src="../static/example/slider2.jpg" alt="photo" />
+                    <h3><span>neque a mauris</span><a href="#">Great design and the best ideas Dolor sit amet, consectetur adipiscing elit. Aliquam varius sapien porttitor dui lobortis</a></h3>
+                </li>
+                <li>
+                    <img src="../static/example/slider3.jpg" alt="photo" />
+                    <h3><span>neque a mauris</span><a href="#">Great design and the best ideas. Dolor sit amet, consectetur adipiscing elit</a></h3>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section id="container">
+    <div class="container">
+    <section id="welcome">
+       
+    </section>
+    <div class="block-divider">
+    </div>
+    <div class="row">
+        <div class="span3">
+            <h3 class="slider-recents">Services</h3>
+            <p class="hidden-phone">
+                Our product services include bathing, 
+                beauty, foster care, tooth cleaning, etc.
+            </p>
+            <a th:href="@{/ser}" class="read-more hidden-phone">Read More...</a>
+        </div>
+        <div class="span9">
+            <div id="our-projects" class="carousel btleft">
+                <div class="carousel-wrapper">
+                    <ul class="da-thumbs">
+                        <li>
+                            <img src="../static/example/2.jpg" />
+                            <div>
+                                <a href="../static/example/view.jpg" data-rel="prettyPhoto"></a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../static/example/3.png" />
+                            <div>
+                                <a href="../static/example/view.jpg"  data-rel="prettyPhoto"></a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../static/example/4.jpeg" />
+                            <div>
+                                <a href="../static/example/view.jpg"  data-rel="prettyPhoto"></a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../static/example/latest4.jpg" />
+                            <div>
+                                <a href="../static/example/view.jpg"  data-rel="prettyPhoto"></a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../static/example/latest5.jpg" />
+                            <div>
+                                <a href="../static/example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                <a href="blog-single.html" class="p-link"></a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../static/example/latest6.jpg" />
+                            <div>
+                                <a href="../static/example/view.jpg" class="p-view" data-rel="prettyPhoto"></a>
+                                <a href="blog-single.html" class="p-link"></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#our-projects').elastislide({
+                        imageW  : 270,
+                        margin  : 30
+                    });
+                });
+            </script>
+        </div>
+    
+        
+        
+    </div>
+    <div class="block-divider">
+    </div>
+    <div class="row our-blog">
+        <div class="title-divider span12">
+            <div class="divider-arrow"></div>
+            <h3>Groomers</h3>
+        </div>
+        <article class="span3">
+            <img src="../static/example/TJ.jpg" alt="photo" />
+            <!--<p class="l-meta"><span>By <a href="#">Tom Johnson</a>  | On 05/09/2012 | In <a href="#">Music</a></span></p> -->
+            <h4 class="title"><a href="#">Tom Johnson</a></h4>
+            <p>He is good at dog grooming services, and can create various exquisite shapes for pets according to your needs. </p>
+            <a th:href="@{'Groomer'}" class="read-more">Read More...</a>
+        </article>
+        <article class="span3">
+            <img src="../static/example/AB.jpg" alt="photo" />
+            <!--<p class="l-meta"><span>By <a href="#">Tom Johnson</a>  | On 05/09/2012 | In <a href="#">Travel</a></span></p> -->
+            <h4 class="title"><a href="#">Anne Brown</a></h4>
+            <p>She is good at cleaning pets' bodies. Every part of a pet's body can be washed clean by her.</p>
+            <a th:href="@{'Groomer'}" class="read-more">Read More...</a>
+        </article>
+        <article class="span3">
+            <img src="../static/example/JF.jpg" alt="photo" />
+            
+            <h4 class="title"><a href="#">Jack Franklin</a></h4>
+            <p>He is responsible for the vast majority of pet care services in this store. He is very disciplined and can always classify pets efficiently.</p>
+            <a th:href="@{'Groomer'}" class="read-more">Read More...</a>
+        </article>
+        <article class="span3">
+            <img src="../static/example/TS.jpg" alt="photo" />
+            
+            <h4 class="title"><a href="#">Tony Stone</a></h4>
+            <p>He is very good at soothing pets' emotions and can calm them down when trimming their nails. </p>
+            <a th:href="@{'Groomer'}" class="read-more">Read More...</a>
+        </article>
+    </div>
+    <div class="block-divider2">
+    </div>
+    
+    <div class="row">
+        <div class="span3">
+            <h3 class="slider-recents">Products</h3>
+            <p class="hidden-phone">
+                Our products include food, 
+               clothes, or even some medicine, etc.
+            </p>
+            <a th:href="@{'maintainProducts'}" class="read-more hidden-phone">Read More...</a>
+        </div>
+        <div class="span9">
+            <div id="our-projects1" class="carousel btleft">
+                <div class="imglist">
+                    <ul class="da-thumbs">
+    
+                        <li>
+                            <img src="../static/example/5.jpg" />
+                            <div>
+                                <a href="../static/example/view.jpg" data-rel="prettyPhoto"></a>
+                            </div>
+    
+                            
+                        </li>
+                        <li>
+                            <img src="../static/example/6.jpg"/>
+                            <div>
+                                <a href="../static/example/view.jpg" data-rel="prettyPhoto"></a>
+                            </div>
+                        </li>
+                    
+                        <li>
+                            <img src="../static/example/7.jpg" />
+                            <div>
+                                <a href="../static/example/view.jpg" data-rel="prettyPhoto"></a>
+                            </div>
+                        </li>
+    
+                        <li>
+                            <img src="../static/example/8.jpg" />
+                            <div>
+                                <a href="../static/example/view.jpg" data-rel="prettyPhoto"></a>
+                            </div>
+                        </li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#our-projects').elastislide({
+                        imageW  : 270,
+                        margin  : 30
+                    });
+                });
+            </script>
+        </div>
+     
+    </div>
+        
+    
+       
+
+<style>
+    .MyButton {
+      background-color: #84cee6;
+      border: white;
+      color: white;
+      padding: 30px 100px;
+      width: 500px;
+      height: 70px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+
+<br></br>
+<br></br>
+<br></br>
+<center>
+    <div class="block-divider">
+    </div>
+    <center>
+    <a th:href="@{/job}"><button class="MyButton1">Apply for a job</button></a><br></br>
+    </center>    
+        
+</center>
+
+
+<style>
+    .MyButton1 {
+      background-color: #f6f5f3;
+      border: white;
+      color: rgb(87, 87, 87);
+      padding: 20px 50px;
+      width: 250px;
+      height: 60px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    </style>
+  
+
+<br></br>
+<br></br>
+
+
+	
+<!--<div style="display:none"><script src='http//v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>-->
+</body>
+</html>

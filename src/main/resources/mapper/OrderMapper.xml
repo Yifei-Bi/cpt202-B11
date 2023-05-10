@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.finall.dao.OrderMapper">
+
+<!--    <resultMap id="orderInfoMap" type="com.example.finall.pojo.OrderInfo">-->
+<!--        <result property="order_id" column="order_id" jdbcType="INTEGER"/>-->
+<!--        <result property="phone" column="phone" jdbcType="INTEGER"/>-->
+<!--        <result property="employee_id" column="employee_id" jdbcType="INTEGER"/>-->
+<!--        <result property="pet_id" column="pet_id" jdbcType="INTEGER"/>-->
+<!--        <result property="start_time" column="start_time" jdbcType="TIMESTAMP"/>-->
+<!--        <result property="end_time" column="end_time" jdbcType="TIMESTAMP"/>-->
+<!--        <result property="status" column="status" jdbcType="VARCHAR"/>-->
+<!--        <result property="notes" column="notes" jdbcType="VARCHAR"/>-->
+<!--        <result property="service_type" column="service_type" jdbcType="VARCHAR"/>-->
+<!--    </resultMap>-->
+    <insert id="addOrder" >
+      insert into order_info(phone,employee_id,pet_id,order_id,start_time,end_time,status,notes,service_type)
+           values (#{phone},#{employee_id},#{pet_id},#{order_id},#{start_time},#{end_time},#{status},#{notes},#{service_type});
+    </insert>
+    <update id="updateOrder">
+        update order_info
+        set
+            phone = #{phone},
+            employee_id = #{employee_id},
+            pet_id = #{pet_id},
+            start_time = #{start_time},
+            end_time = #{end_time},
+            status = #{status},
+            notes = #{notes},
+            service_type = #{service_type})
+        where order_id = #{Order_id};
+
+    </update>
+    <update id="updateStatus">
+        update order_info
+        set
+            status = #{status}
+        where order_id = #{Order_id};
+    </update>
+    <delete id="deleteOrderById">
+        delete from order_info where order_id = #{order_id};
+    </delete>
+    <select id="QueryOrders" resultType="com.example.finall.pojo.OrderInfo">
+        select
+            *
+--                phone,
+--                employee_id  as employeeId,
+--                pet_id as petId,
+--                order_id  as orderId,
+--                start_time as startTime,
+--                end_time as endTime,
+--                status,
+--                notes,
+--                service_type  as serviceType
+        from order_info;
+    </select>
+    <select id="QueryOrderById" resultType="com.example.finall.pojo.OrderInfo">
+        select * from order_info
+        where order_id = #{order_id}
+        order by end_time desc;
+    </select>
+    <select id="QueryOrderByPet" resultType="com.example.finall.pojo.OrderInfo">
+        select * from order_info
+        where pet_id = #{pet_id}
+        order by end_time desc;
+    </select>
+    <select id="QueryOrderByPhone" resultType="com.example.finall.pojo.OrderInfo">
+        select * from order_info
+        where phone = #{phone}
+        order by end_time desc;
+    </select>
+    <select id="QueryOrderByDate" resultType="com.example.finall.pojo.OrderInfo">
+        select * from order_info
+        where start_time =  #{start_time}
+        order by end_time desc;
+    </select>
+    <select id="QueryOrderByEndDate" resultType="com.example.finall.pojo.OrderInfo">
+        select * from order_info
+        where end_time = #{end_time};
+    </select>
+    <select id="QueryOrderByStatus" resultType="com.example.finall.pojo.OrderInfo">
+        select * from order_info
+        where status = #{status}
+        order by end_time desc;
+    </select>
+    <select id="QueryOrderByEmployeeid" resultType="com.example.finall.pojo.OrderInfo">
+        select * from order_info
+        where employee_id = #{employeeId}
+        order by end_time desc;
+    </select>
+</mapper>

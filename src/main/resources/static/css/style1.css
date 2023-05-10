@@ -1,0 +1,12 @@
+button {
+    background-color: #4CAF50; /* 背景颜色 */
+    border: none; /* 去掉边框 */
+    color: white; /* 文字颜色 */
+  }
+
+  button {   font-size: 16px; /* 字体大小 */   
+             padding: 10px 20px; /* 边距 */ }
+  button {   border-radius: 5px; /* 圆角 */ }
+  button:hover {   background-color: #3e8e41; /* 悬停时的背景色 */  
+                   color: white; /* 悬停时的文字颜色 */   
+                   border: 2px solid black; /* 悬停时的边框样式 */ }

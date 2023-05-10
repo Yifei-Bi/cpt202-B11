@@ -1,0 +1,335 @@
+<!DOCTYPE html >
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:java8="java.time.*">
+<head>
+	<meta charset="UTF-8">
+	<title>Add Appointment</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/style2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link rel="shortcut icon" href="-.ico" type="image/x-icon">
+    <style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #4d4c4c;
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover {
+			background-color: #111;
+		}
+
+        body {
+			background-color: rgb(186, 234, 253); 
+			
+		}
+
+        h1 {
+              text-align: center;
+              font-family:'Times New Roman', Times, serif;
+        }
+        p {
+              text-align: center;
+			  font-size: 20px;
+              font-family:'Times New Roman', Times, serif;
+        }
+
+        .bordered {
+                  padding: 10px;
+                 border: 1px solid #aaaaaa;
+                 width: 100%;
+                 text-align: center;
+    
+                 border-radius: 5px;
+                box-shadow: 2px 2px 4px #5e5b5b;
+       }
+
+       input[type="text"] {
+              width: 250px;
+              height: 30px;
+        }
+
+        #ad-description {
+          width: 600px;
+          height: 300px;
+        }
+
+        #myTable {
+      width: 60%;
+      font-size: 25px;
+	  font-family: 'Times New Roman', Times, serif;
+		color: #555555;
+		font-size: 25px;}
+
+		form{
+			color: #7a7878;
+			font-size: 25px;
+			line-height: 1.5;
+		}
+
+    td{
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    select{
+      text-align: center;
+    
+    }
+
+	h2{
+		text-align: center;
+        font-family:'Times New Roman', Times, serif;
+		color: #7a7878;
+	}
+
+    .show-price-btn {
+  margin-top: 20px;
+}
+	
+	</style>
+</head>
+<body>
+	<div>
+		<div>
+        
+			<h1 class="bordered"><i class="fas fa-paw"></i>      Welcome to our Pet Store!      <i class="fas fa-paw"></i></h1>
+
+			<center>
+				<div class="image-row">
+					<img src="../static/f.jpg" alt="Image 1" width="363">
+					<img src="../static/g.jpg" alt="Image 2" width="363">
+					<img src="../static/OIP.jpg" alt="Image 3" width="363">
+					<img src="../static/R.jpg" alt="Image 4" width="363">
+				</div>
+			</center>
+		
+		
+
+			<p>Our store is committed to providing services 
+				for pet dogs, including bathing, beauty, tooth cleaning, and foster care services.</p>
+			<p> Groomers in this store have their own areas of expertise.</p>
+			<p>At the same time, our store also sells various pet peripheral goods.</p>
+			<p>Welcome to the official website to check your options.</p>
+		</div>
+        
+       
+	</div>
+  <div class="menu-container">
+		<ul class="menu">
+			<li style="text-align: center;"><a th:href="@{/ho}">HOME</a></li></ul>
+		</div>
+    <br></br>
+
+
+<script language="javascript">
+  document.querySelector('.show-price-btn').addEventListener('click', function() {
+  document.querySelector('.price-popup').style.display = 'block';
+});
+</script>
+    
+	
+
+
+<style>
+    .MyButton {
+      background-color: #84cee6;
+      border: white;
+      color: white;
+      padding: 30px 100px;
+      width: 500px;
+      height: 70px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+
+    form{
+			color: #7a7878;
+      font-family: 'Times New Roman', Times, serif;
+			font-size: 25px;
+			line-height: 1.5;
+		}
+
+	.forum-post {
+		border: 1px solid #9a9a9a;
+		width: 70%;
+		padding: 10px;
+		margin-bottom: 10px;
+		border-radius: 10px;
+	}
+
+	h2{
+		text-align:center;
+		font-family: 'Times New Roman', Times, serif;
+	}
+    </style>
+
+
+
+
+<br></br>
+
+<center>
+   <h1>Add Appointment</h1>
+  <br>
+	<div class="forum-post" style="border: 4px double #ccc; padding: 10px;">
+	<!--/*@thymesVar id="#java8" type=""*/-->
+	<h2>Current available dates:</h2>
+  <form action = "addAppointments"  >
+	  <label for="Groomer">Grommer id</label>
+	  <select id="Groomer" name="Groomer">
+		  <option th:each="grommer:${groomerList}" th:value="${grommer.employeeId}" th:text="${grommer.employeeId}"> </option>
+	  </select><br><br>
+
+    <label for="start time">Time Duration</label>
+    <select id="start time" name="Time">
+      <option value="10:00:00-12:00:00">10:00-12:00</option>
+      <option value="11:00:00-13:00:00">11:00-13:00</option>
+      <option value="12:00:00-14:00:00">12:00-14:00</option>
+      <option value="13:00:00-15:00:00">13:00-15:00</option>
+	  <option value="14:00:00-16:00:00">14:00-16:00</option>
+	  <option value="15:00:00-17:00:00">15:00-17:00</option>
+	  <option value="16:00:00-18:00:00">16:00-18:00</option>
+    </select><br><br>
+
+
+   
+    <label for="Pet">Pet</label>
+
+	  <select class="form-control" name="Pet" id="Pet">
+		  <option th:each="pet:${petList}" th:value="${pet.pet_id}" th:text="${pet.pet_id}"> </option>
+	  </select><br><br>
+
+	  <label for="Service">Service</label>
+	  <select id="Service" name="Service">
+		  <option th:each="service:${serviceList}" th:value="${service.type_name}" th:text="${service.type_name}"> </option>
+	  </select><br><br>
+
+
+
+    <label for="Notes">Notes</label>
+    <input type="notes" id="notes" name="notes"><br><br>
+    
+<td><button style="font-family: 'Times New Roman', Times, serif;" th:href="@{'myAppointment'}">View current price</button></td>
+</form>
+	<p>Order: <span th:text="${odPrice}"></span></p>
+<!--	<button th:href="@{'myAppointment'}">Confirm</button>-->
+	</div>
+</center>
+
+
+<script>
+  function confirmAppointment(id) {
+    var result = " ?";
+    if ("order successfully") {
+      console.log('Total Price = ' + price);
+      alert("Confirm");
+    } else {
+      console.log('You can not make this appointment !');
+      alert("Confirm");
+    }
+  }
+
+  
+			//输出时间
+			function fn(){
+			    var time = new Date();
+			    var str= "";
+			    var div = document.getElementById("time");
+				//年、月、日、时、分、秒、星期
+			    var year = time.getFullYear();
+			    var mon = time.getMonth()+1;
+			    var day = time.getDate();
+			    var h = time.getHours();
+			    var m = time.getMinutes();
+			    var s = time.getSeconds();
+			    var week = time.getDay();
+			    switch (week){
+			        case 0:week="日";
+			            break;
+			        case 1:week="一";
+			            break;
+			        case 2:week="二";
+			            break;
+			        case 3:week="三";
+			            break;
+			        case 4:week="四";
+			            break;
+			        case 5:week="五";
+			            break;
+			        case 6:week="六";
+			            break;
+			    }
+			     str = year +"年"+totwo(mon)+"月"+totwo(day)+"日"+"&nbsp;"+totwo(h)+":"+totwo(m)+":"+totwo(s)+"&nbsp;"+"星期"+week;
+			    
+				 // str = year +"年"+mon+"月"+day+"日"+"&nbsp;"+h+":"+m+":"+s+"&nbsp;"+"星期"+week;
+				
+				div.innerHTML = str;
+			}
+			fn();
+			
+			//设置每秒刷新一次日期
+			setInterval(fn,1000);
+			
+			//当月份或者日期是一位数的时候显示前面加一个0 比如2020年08月04日 18:20:53 星期二
+			function totwo(n){
+			    if(n<=9){
+			        return n = "0"+n;
+			    }
+			    else{
+			        return n =""+n;
+			    }
+			}
+
+</script>
+<br><br>
+<center>
+<!--	 <h2>The total Price is: </h2><h2 th:text = "${appointment.totalPrice}"></h2>-->
+</center>
+
+
+
+<style>
+    .MyButton1 {
+      background-color: #f6f5f3;
+      border: white;
+      color: rgb(87, 87, 87);
+      padding: 20px 50px;
+      width: 200px;
+      height: 60px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+  
+
+<br></br>
+<br></br>
+
+
+	
+
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.finall.dao.CommentsMapper">
+
+
+    <insert id="addComments">
+        insert into comments (text,groomer_ranking,order_id,service_ranking,shop_ranking)
+        values (#{text},#{groomer_ranking},#{order_id},#{service_rating},#{shop_rating});
+
+    </insert>
+    <delete id="deleteCommentsById">
+        delete from comments
+        where order_id = #{order_id};
+    </delete>
+    <select id="QueryCommentsByText" resultType="com.example.finall.pojo.Comments">
+        select * from comments
+        where text = #{text};
+    </select>
+<!--    <select id="QueryCommentsById" resultType="com.example.finall.pojo.Comments">-->
+<!--        select * from comments-->
+<!--        where comment_id = #{comment_id}-->
+<!--    </select>-->
+    <select id="QueryAllComments" resultType="com.example.finall.pojo.Comments">
+        select * from comments;
+    </select>
+</mapper>

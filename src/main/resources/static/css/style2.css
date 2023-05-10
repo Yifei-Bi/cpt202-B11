@@ -1,0 +1,76 @@
+.background {
+	background-image: url('pet-store-background.jpg');
+	background-size: cover;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    background-color: rgb(169, 205, 251);
+}
+
+.content {
+	background-color: rgba(126, 181, 248, 0.8);
+	padding-left: 50px;
+    padding-right: 50px;
+	text-align: center;
+	/*border-radius: 10px;*/
+	box-shadow: 0 0 10px rgba(196, 195, 195, 0.693);
+}
+
+h1 {
+	font-size: 48px;
+	margin-bottom: 20px;
+	color: #454343cf;
+}
+
+p {
+	font-size: 24px;
+	line-height: 1.5;
+	color: #666;
+}
+
+
+.menu-container {
+    display: flex;
+    justify-content: center;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.menu li {
+    margin: 0 10px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.menu li a {
+    color: #94c2fb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a {
+    flex: 1;
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+  }
+
+  .image-row {
+    display: block;
+    overflow: hidden;
+    margin: 10px;
+  }
+  
+  .image-row img {
+    float: left;
+    width: 23.5%;
+    height: auto;
+    margin: 10px;
+  }
+

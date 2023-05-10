@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Groomers</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/style2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link rel="shortcut icon" href="-.ico" type="image/x-icon">
+    <style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #4d4c4c;
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover {
+			background-color: #111;
+		}
+
+        body {
+			background-color: rgb(186, 234, 253); 
+			
+		}
+
+        h1 {
+              text-align: center;
+              font-family:'Times New Roman', Times, serif;
+        }
+        p {
+              text-align: center;
+			  font-size: 20px;
+              font-family:'Times New Roman', Times, serif;
+        }
+
+        .bordered {
+                  padding: 10px;
+                 border: 1px solid #aaaaaa;
+                 width: 100%;
+                 text-align: center;
+    
+                 border-radius: 5px;
+                box-shadow: 2px 2px 4px #5e5b5b;
+       }
+
+       input[type="text"] {
+              width: 250px;
+              height: 30px;
+        }
+
+        #ad-description {
+          width: 600px;
+          height: 300px;
+        }
+
+		form{
+			color: #7a7878;
+			font-size: 25px;
+			line-height: 1.5;
+		}
+
+    td img {
+  width: 160px;
+}
+
+
+#myTable {
+      width: 80%;
+      font-size: 25px;
+	  font-family: 'Times New Roman', Times, serif;
+		color: #555555;
+		font-size: 25px;
+text-align: center;
+    }
+
+	
+	</style>
+</head>
+<body>
+	<div>
+    <div id="aaa"></div>
+
+		<div>
+        
+			<h1 class="bordered"><i class="fas fa-paw"></i>      Welcome to our Pet Store!      <i class="fas fa-paw"></i></h1>
+
+			<center>
+				<div class="image-row">
+					<img src="../static/1.jpg" alt="Image 1" width="363">
+					<img src="../static/3.jfif" alt="Image 2" width="363">
+					<img src="../static/2.jpg" alt="Image 3" width="363">
+					<img src="../static/4.jfif" alt="Image 4" width="363"			>
+				</div>
+			</center>
+		
+
+			<p>Our store is committed to providing services 
+				for pet dogs, including bathing, beauty, tooth cleaning, and foster care services.</p>
+			<p> Groomers in this store have their own areas of expertise.</p>
+			<p>At the same time, our store also sells various pet peripheral goods.</p>
+			<p>Welcome to the official website to check your options.</p>
+		</div>
+        
+       
+	</div>
+  <div class="menu-container">
+		<ul class="menu">
+			<li style="text-align: center;"><a th:href="@{/ho}">HOME</a></li>
+		</ul>
+		</div>
+
+    <br>
+    <h1>Groomers</h1>
+<br>
+    <table  id="myTable">
+      <thead>
+        <tr>
+			<th>photo</th>
+          <th></th>
+			<th>ID</th>
+          <th>Name</th>
+          <th>Rank</th>
+          <th th:if="${session.userId == '20001'}">Operation</th>
+			<th th:if="${session.userId == '20001'}">Operation</th>
+
+          
+        </tr>
+      </thead>
+		<ul>
+			<tr th:each="user: ${groomerList}">
+				<td><img th:src="'data:image/jpg;base64,'+${user.groomerPicture2}"/><td>
+<!--				<td> img th:src="@{'/image/' + ${user.groomerPicture}}" width="50" height="50"/></td>-->
+				<td th:text="${user.employeeId}"></td>
+				<td th:text="${user.groomerName}"></td>
+				<td th:text="${user.rank}"></td>
+				<td>
+						<a class="btn btn-danger" th:href="@{'/delete/'+${user.employeeId}}" th:if="${session.userId == '20001'}">delete</a>
+				</td>
+				<td><a class="btn btn-danger" th:href="@{'/updateGroomers/'+${user.employeeId}}" th:if="${session.userId == '20001'}">update</a></td>
+			</tr>
+
+		</ul>
+	</table>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<center>
+	<button><a th:href="@{'addGroomer'}" th:if="${session.userId == '20001'}">Add</a></button>
+  </center>
+	<script> var fileInput = document.getElementById('fileInput');
+		// 获取图片预览元素
+	var imagePreview = document.getElementById('imagePreview');
+	fileInput.addEventListener('change', function(event) { var file = event.target.files[0]; var reader = new FileReader();
+		reader.onloadend = function() {
+			var imageUrl = reader.result;
+			imagePreview.src = imageUrl; }
+		reader.readAsDataURL(file); });
+	</script>
+	<script>
+		function deleteData(id) {
+			$.ajax({
+				type: "DELETE",
+				url: "/delete/" + id,
+				success: function(result) {
+					// 删除成功后的操作
+					alert("删除成功！");
+					location.reload(); // 刷新页面
+				},
+				error: function(result) {
+					// 删除失败后的操作
+					alert("删除失败！");
+				}
+			});
+		}
+
+	</script>
+	
+	
+
+
+<style>
+    .MyButton {
+      background-color: #84cee6;
+      border: white;
+      color: white;
+      padding: 30px 100px;
+      width: 500px;
+      height: 70px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+
+<br></br>
+<br></br>
+<br></br>
+
+
+
+<style>
+    .MyButton1 {
+      background-color: #f6f5f3;
+      border: white;
+      color: rgb(87, 87, 87);
+      padding: 20px 50px;
+      width: 200px;
+      height: 60px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+  
+
+<br></br>
+<br></br>
+
+
+
+	
+
+
+</body>
+</html>

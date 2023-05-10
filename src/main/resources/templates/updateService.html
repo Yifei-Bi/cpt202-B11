@@ -1,0 +1,177 @@
+<!DOCTYPE html >
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Update Service</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/style2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link rel="shortcut icon" href="-.ico" type="image/x-icon">
+    <style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #4d4c4c;
+		}
+
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover {
+			background-color: #111;
+		}
+
+        body {
+			background-color: rgb(186, 234, 253); 
+			
+		}
+
+        h1 {
+              text-align: center;
+              font-family:'Times New Roman', Times, serif;
+        }
+        p {
+              text-align: center;
+			  font-size: 20px;
+              font-family:'Times New Roman', Times, serif;
+        }
+
+        .bordered {
+                  padding: 10px;
+                 border: 1px solid #aaaaaa;
+                 width: 100%;
+                 text-align: center;
+    
+                 border-radius: 5px;
+                box-shadow: 2px 2px 4px #5e5b5b;
+       }
+
+       input[type="text"] {
+              width: 250px;
+              height: 30px;
+        }
+
+        #ad-description {
+          width: 600px;
+          height: 300px;
+        }
+
+		form{
+			color: #7a7878;
+      font-family: 'Times New Roman', Times, serif;
+			font-size: 25px;
+			line-height: 1.5;
+		}
+
+	
+	</style>
+</head>
+<body>
+	<div>
+		<div>
+        
+			<h1 class="bordered"><i class="fas fa-paw"></i>      Welcome to our Pet Store!      <i class="fas fa-paw"></i></h1>
+
+			<center>
+				<div class="image-row">
+					<img src="../static/a.jpg" alt="Image 1" width="363">
+					<img src="../static/b.jpg" alt="Image 2" width="363">
+					<img src="../static/d.jpg" alt="Image 3" width="363">
+					<img src="../static/e.jpg" alt="Image 4" width="363">
+				</div>
+			</center>
+
+
+
+
+
+			<p>Our store is committed to providing services 
+				for pet dogs, including bathing, beauty, tooth cleaning, and foster care services.</p>
+			<p> Groomers in this store have their own areas of expertise.</p>
+			<p>At the same time, our store also sells various pet peripheral goods.</p>
+			<p>Welcome to the official website to check your options.</p>
+		</div>
+        
+       
+	</div>
+  <div class="menu-container">
+		<ul class="menu">
+			<li style="text-align: center;"><a th:href="@{/ho}">HOME</a></li>
+		</ul>
+		</div>
+    <br>
+    <br>
+    <br>
+   <center>
+    <form action = "updateServices">
+      <label for="normalPrice">Normal Price</label>
+      <input type="text" id="normalPrice" name="normalPrice"><br><br>
+      <label for="content">Content</label>
+      <input type="text" id="content" name="content"><br><br>
+      
+      <input type="submit" value="Update Service" style="font-family: 'Times New Roman', Times, serif;">
+    </form>
+  </center>
+
+	
+	
+
+
+<style>
+    .MyButton {
+      background-color: #84cee6;
+      border: white;
+      color: white;
+      padding: 30px 100px;
+      width: 500px;
+      height: 70px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+
+<br></br>
+<br></br>
+<br></br>
+
+
+
+<style>
+    .MyButton1 {
+      background-color: #f6f5f3;
+      border: white;
+      color: rgb(87, 87, 87);
+      padding: 20px 50px;
+      width: 200px;
+      height: 60px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+  
+
+<br></br>
+<br></br>
+
+</body>
+</html>

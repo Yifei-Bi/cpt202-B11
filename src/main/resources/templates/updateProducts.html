@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Update Products page</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/style2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<link rel="shortcut icon" href="-.ico" type="image/x-icon">
+    <style>
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #4d4c4c;
+		}
+    .highlight {
+      background-color: yellow;
+    }
+    
+		li {
+			float: left;
+		}
+
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover {
+			background-color: #111;
+		}
+
+        body {
+			background-color: rgb(186, 234, 253); 
+			
+		}
+
+        h1 {
+              text-align: center;
+              font-family:'Times New Roman', Times, serif;
+        }
+        p {
+              text-align: center;
+			  font-size: 20px;
+              font-family:'Times New Roman', Times, serif;
+        }
+
+        .bordered {
+                  padding: 10px;
+                 border: 1px solid #aaaaaa;
+                 width: 100%;
+                 text-align: center;
+    
+                 border-radius: 5px;
+                box-shadow: 2px 2px 4px #5e5b5b;
+       }
+
+       input[type="text"] {
+              width: 250px;
+              height: 30px;
+        }
+
+        #ad-description {
+          width: 600px;
+          height: 300px;
+        }
+
+        #myTable {
+      width: 60%;
+      font-size: 25px;
+	  font-family: 'Times New Roman', Times, serif;
+		color: #555555;
+		font-size: 25px;
+
+    }
+
+	td{
+		text-align: center;
+		font-family: 'Times New Roman', Times, serif;
+		color: #828080;
+		font-size: 20px;
+		font-size: 20px;
+		padding: 10px 0;
+	}
+
+  .button-container {
+  display: flex;
+  justify-content: space-between;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+ 
+}
+
+.button {
+  background-color: #828080;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+input[type="text"] {
+              width: 250px;
+              height: 30px;
+        }
+
+        #ad-description {
+          width: 600px;
+          height: 300px;
+        }
+
+		form{
+			color: #7a7878;
+			font-size: 25px;
+			line-height: 1.5;
+		}
+   
+	
+	
+
+	
+	</style>
+  <script>
+    
+        function deleterec() {
+          var result = confirm("Do you confirm to operate?");
+          if (result == true) {
+            alert("Confirm");
+          } else {
+            alert("Cancel");
+          }
+        }
+      
+    function highlightSearch() {
+      // 获取用户输入的搜索关键字
+      var searchTerm = document.getElementById('searchTerm').value;
+      var element = document.getElementsByTagName('body')[0];
+    
+      // 在整个页面中查找匹配的内容
+      var regex = new RegExp(searchTerm, 'gi');
+      var matches = element.innerHTML.match(regex);
+    
+      // 高亮显示匹配的内容
+      for (var i = 0; i < matches.length; i++) {
+        var match = matches[i];
+        element.innerHTML = element.innerHTML.replace(match, '<span class="highlight">' + match + '</span>');
+      }
+    }
+    function displayAlert(type, data, time){
+
+        var lunbo=document.createElement("div");
+        
+          if(type == "success") {
+              lunbo.style.backgroundColor = "#009900";
+          } else if(type == "error") {
+              lunbo.style.backgroundColor = "#990000";
+          } else if(type == "info") {
+              lunbo.style.backgroundColor = " #e6b800";
+          } else {
+              console.log("入参type错误");
+              return;
+          }
+    
+          lunbo.id="lunbo";
+          lunbo.style.position = "absolute";
+          lunbo.style.width = "200px";
+          lunbo.style.height = "60px";
+          lunbo.style.marginLeft = "-100px";
+          lunbo.style.marginTop = "-30px";
+          lunbo.style.left = "90%";
+          lunbo.style.top = "15%";
+          lunbo.style.color = "white";
+          lunbo.style.fontSize = "25px";
+          lunbo.style.borderRadius = "20px";
+          lunbo.style.textAlign="center";
+          lunbo.style.lineHeight="60px";
+    
+          if(document.getElementById("lunbo")==null){
+              document.body.appendChild(lunbo);
+              lunbo.innerHTML=data;
+              setTimeout(function(){
+                  document.body.removeChild(lunbo);
+              } ,time);
+          }
+        }
+
+    
+  </script>
+</head>
+<body>
+	<div>
+		<div>
+        
+			<h1 class="bordered"><i class="fas fa-paw"></i>      Welcome to our Pet Store!      <i class="fas fa-paw"></i></h1>
+
+			<center>
+				<div class="image-row">
+					<img src="../static/a.jpg" alt="Image 1" width="363">
+					<img src="../static/b.jpg" alt="Image 2" width="363">
+					<img src="../static/d.jpg" alt="Image 3" width="363">
+					<img src="../static/e.jpg" alt="Image 4" width="363">
+				</div>
+			</center>
+
+
+
+
+			<p>Our store is committed to providing services 
+				for pet dogs, including bathing, beauty, tooth cleaning, and foster care services.</p>
+			<p> Groomers in this store have their own areas of expertise.</p>
+			<p>At the same time, our store also sells various pet peripheral goods.</p>
+			<p>Welcome to the official website to check your options.</p>
+		</div>
+        
+       
+	</div>
+  <div class="menu-container">
+		<ul class="menu">
+			<li style="text-align: center;"><a th:href="@{/ho}">HOME</a></li>
+		</ul>
+	</div>
+
+   <br><br><br>
+	<center>
+    <center>
+      <h1>Update Products</h1>
+      <form action="updateProductss" style="font-family: 'Times New Roman', Times, serif; ">
+        <label for="ad_title">Name</label><br>
+        
+        <input type="text" id="ad_title" name="name"><br>
+        
+        <label for="ad_description">Description</label><br>
+        
+        <textarea id="ad_description" name="description"></textarea><br>
+        
+        <label for="ad_image">Image</label><br>
+        
+        <input type="file" id="ad_image" name="image"><br>
+        
+       
+        <br>
+        <input type="submit" value="Confirm" >
+        <br></br>
+      </form>
+    </center>
+    
+    </center>
+    
+
+      
+
+  
+
+
+	
+	
+
+
+<style>
+    .MyButton {
+      background-color: #84cee6;
+      border: white;
+      color: white;
+      padding: 30px 100px;
+      width: 500px;
+      height: 70px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+
+<br></br>
+<br></br>
+<br></br>
+
+
+
+<style>
+    .MyButton1 {
+      background-color: #f6f5f3;
+      border: white;
+      color: rgb(87, 87, 87);
+      padding: 20px 50px;
+      width: 200px;
+      height: 60px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+    </style>
+  
+
+<br></br>
+<br></br>
+
+</body>
+</html>

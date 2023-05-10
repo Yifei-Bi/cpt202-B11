@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.finall.dao.GroomerMapper">
+
+    <resultMap id="groomerMap" type="com.example.finall.pojo.Groomer">
+
+             <result property="employeeId" column="employee_id" jdbcType="INTEGER"/>
+            <result property="groomerName" column="groomer_name" jdbcType="VARCHAR"/>
+            <result property="rank" column="rank" jdbcType="INTEGER"/>
+            <result property="experience" column="experience" jdbcType="VARCHAR"/>
+            <result property="isFree" column="is_free" jdbcType="INTEGER"/>
+            <result property="groomerPicture" column="groomer_picture" jdbcType="BLOB"/>
+    </resultMap>
+
+
+    <insert id="addGroomer">
+        insert into groomer(groomer_name,groomer_picture,rank,experience,employee_id,is_free)
+        values (#{groomerName},#{groomerPicture},#{rank},#{experience},#{employeeId},#{isFree});
+    </insert>
+    <update id="updateGroomer">
+        update groomer
+        set groomer_name = #{groomerName},
+            groomer_picture =#{groomerPicture},
+            rank = #{rank},
+            is_free = #{isFree}
+        where employee_id = #{employeeId};
+
+    </update>
+    <delete id="deleteByGroomerName">
+        delete from groomer where groomer_name = #{groomerName};
+    </delete>
+    <delete id="deleteByGroomerId">
+        delete from groomer where employee_id = #{employeeId};
+    </delete>
+    <select id="queryGroomerByName" resultType="com.example.finall.pojo.Groomer">
+        select * from groomer
+        where groomer_name = #{groomerName};
+    </select>
+    <select id="queryGroomerById" resultMap="groomerMap">
+        select * from groomer
+        where employee_id = #{employeeId};
+    </select>
+    <select id="queryGroomerByRank" resultType="com.example.finall.pojo.Groomer">
+        select * from groomer
+        where rank = #{rank};
+    </select>
+    <select id="listAllGroomer" resultMap="groomerMap">
+        select * from groomer;
+    </select>
+</mapper>
